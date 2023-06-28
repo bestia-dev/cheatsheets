@@ -37,10 +37,10 @@ c-a ]      -> paste from buffer
 
 nano  ~/.screenrc
 
-# This line makes Detach without losing the regions/windows layout
+\# This line makes Detach without losing the regions/windows layout
 layout save default
 
-# status bar with informations
+\# status bar with informations
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%S - %Y-%m-%d %C:%s"
