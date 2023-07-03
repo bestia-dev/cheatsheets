@@ -46,6 +46,9 @@ One session can have multiple windows (shells) that can be displayed in split re
 
 nano  ~/.screenrc  
 
+# To reload the ~/.screenrc file use
+# Ctrl-a : source ~/.screenrc
+
 #This line makes Detach without losing the regions/windows layout  
 layout save default  
 
@@ -57,3 +60,7 @@ hardstatus string "%S - %Y-%m-%d %C:%s"
 #Enable selecting split regions with mouse clicks  
 defmousetrack on  
 mousetrack on  
+
+# Disable lock screen shortcut, because VM does not have password. Only SSH connection.
+bind x
+bind ^x
