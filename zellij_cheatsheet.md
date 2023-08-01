@@ -99,3 +99,13 @@ When Zellij layouts opens a pane with a "command", then only this command will e
 That command can be closed with ctrl-c then we can use ENTER to re-run it. But only this one command that is configured for that pane.  
 If I need an interactive bash, than I will use a sequence of commands finishing with `exec bash`.  
 
+## Detach and attach
+
+Inside Zellij use ctrl-o and alt-d to DETACH. All the tabs and panes will continue running in the background. Great !  
+To list open sessions and then attach use:  
+
+```bash
+zellij ls
+
+zellij attach web_server
+```
