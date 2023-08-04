@@ -48,7 +48,8 @@ In Windows Terminal - Settings I go to Profiles - Debian - Appearances and chang
 
 Zellij can have different "Sessions". A session can be easily attached or detached. When detached, a session still runs in the background. Great!  
 A session can have multiple "Tabs". A tab can have one or more "Panes" in different positions.  
-Zellij uses different "modes" that are activated by shortcuts like Ctrl-g (LOCK) or Ctrl-t (TAB) or Ctrl-p (PANE). The status-bar is visible by default and makes it easy to learn these shortcuts. Inside a mode there are then new shortcuts for running commands.  
+Zellij uses different "modes" that are activated by shortcuts like `Ctrl-g` (LOCK) or `Ctrl-t` (TAB) or `Ctrl-p` (PANE). The status-bar is visible by default and makes it easy to learn these shortcuts. Inside a mode there are then new shortcuts for running commands.  
+
 ![zellij_status_bar](images/zellij_status_bar.png)
 
 
@@ -59,7 +60,7 @@ Zellij uses different "modes" that are activated by shortcuts like Ctrl-g (LOCK)
 zellij --layout ~/.config/zellij/layouts/layout_web_server.kdl --session web_server
 ```
 
-Layout specific for my web-server:
+Layout specific for my web-server in the file `~/.config/zellij/layouts/layout_web_server.kdl`:
 
 ```kdl
 // layout_web_server.kdl for my Google VM
@@ -112,17 +113,49 @@ layout {
 }
 ```
 
+## Command pane or bash pane
+
 When Zellij layouts opens a pane with a "command", then only this command will execute, not the interactive bash. This is ok for most purposes.  
-That command can be closed with ctrl-c then we can use ENTER to re-run it. But only this one command that is configured for that pane.  
-If I need an interactive bash, than I will use a sequence of commands finishing with `exec bash`.  
+That command can be closed with `Ctrl-c` then we can use `ENTER` to re-run it. But only this one command that is configured for that pane.  
+If I need an interactive bash, than I will use a sequence of bash commands finishing with `exec bash`. The commands are separated by semicolon as standard in bash.  
 
 ## Detach and attach
 
-Inside Zellij use ctrl-o and alt-d to DETACH. All the tabs and panes will continue running in the background. Great !  
-To list open sessions and then attach use:  
+Inside Zellij use `Ctrl-o` and then `d` to DETACH. All the tabs and panes will continue running in the background. Great !  
+To list open sessions and then attach by session name use:  
 
 ```bash
 zellij ls
-
 zellij attach web_server
 ```
+
+## Problem with `Ctrl-q`
+
+Most of the time I don't want to quit a Zellij session. I want to detach the session. But pressing `Ctrl-q` is too easy and then BOOM, I loose my active session completely. I made a change to the configuration to not use directly `Ctrl-q` to quit Zellij.  
+First create the default config file with a zellij command. More details here : [default-configuration](https://zellij.dev/documentation/overview.html?highlight=default#default-configuration). Then edit the config in your preferred editor.  
+
+```bash
+mkdir ~/.config/zellij
+zellij setup --dump-config > ~/.config/zellij/config.kdl
+nano ~/.config/zellij/config.kdl
+```
+
+In the node `keybinds - shared_except "locked"` remove the line
+
+```kdl
+bind "Ctrl q" { Quit; }
+```
+
+In the node `keybinds - normal` add
+
+```kdl
+unbind "Ctrl q"
+```
+
+In the node `keybinds - session` add
+
+```kdl
+bind "Ctrl q" { Quit; }
+```
+
+Now to quit Zellij I need 2 strokes: Ctrl-o then Ctrl-q. It is not so easy to mistype this.  
