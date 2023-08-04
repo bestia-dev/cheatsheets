@@ -46,13 +46,13 @@ In Windows Terminal - Settings I go to Profiles - Debian - Appearances and chang
 
 ## Zellij nomenclature
 
-Zellij can have different "Sessions". A session can be easily attached or detached. When detached, a session still runs in the background. Great!  
+Zellij opens a "Session". There can be many different "Sessions" simultaneously. A session can be easily attached or detached. When detached, a session still runs in the background. Great!  
 A session can have multiple "Tabs". A tab can have one or more "Panes" in different positions.  
-Zellij uses different "modes" that are activated by shortcuts like `Ctrl-g` (LOCK) or `Ctrl-t` (TAB) or `Ctrl-p` (PANE). The status-bar is visible by default and makes it easy to learn these shortcuts. Inside a mode there are then new shortcuts for running commands.  
+Zellij uses different "keyboard modes" that are activated by shortcuts like `Ctrl-g` (LOCK) or `Ctrl-t` (TAB) or `Ctrl-p` (PANE). The status-bar is visible by default and makes it easy to learn these shortcuts. Inside a mode there are then specific mode-keyboard-shortcuts for running commands.  
 
 ![zellij_status_bar](images/zellij_status_bar.png)
 
-
+This shortcuts can be easily changed in the config file. Depending on your use of the terminal you can change the shortcuts to not conflict with other programs you use.  
 
 ## Run a new named session with layout
 
@@ -117,7 +117,7 @@ layout {
 
 When Zellij layouts opens a pane with a "command", then only this command will execute, not the interactive bash. This is ok for most purposes.  
 That command can be closed with `Ctrl-c` then we can use `ENTER` to re-run it. But only this one command that is configured for that pane.  
-If I need an interactive bash, than I will use a sequence of bash commands finishing with `exec bash`. The commands are separated by semicolon as standard in bash.  
+If I need an interactive bash, than I will use a sequence of bash commands finishing with `exec bash`. The commands are separated by semicolon as standard in bash. See the layout file example above.  
 
 ## Detach and attach
 
@@ -159,3 +159,83 @@ bind "Ctrl q" { Quit; }
 ```
 
 Now to quit Zellij I need 2 strokes: Ctrl-o then Ctrl-q. It is not so easy to mistype this.  
+
+## Bash script for a specific use with replace
+
+Sometimes 2 layout files are different only by a specific IP address.  
+Instead of manually editing the layout file I can make a short bash script to copy the default file and replace the old IP address with the new one.  
+Let's make a default kdl config file `~/.config/zellij/layouts/layout_ip_address.kdl`.
+
+```kdl
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="curl"{
+        pane split_direction="vertical"{
+            pane{
+                command "curl"
+                args "35.199.190.85"
+            }
+            pane{
+                command "curl"
+                args "-L" "35.199.190.85"
+            }
+            pane{
+                command "curl"
+                args "-L" "--insecure" "35.199.190.85"
+            }
+        }
+    }
+}
+```
+
+Try the default layout:
+
+```bash
+# create new zellij session
+zellij --layout ~/.config/zellij/layouts/layout_ip_address.kdl
+```
+
+Quit the zellij session with `Ctrl-o Ctrl-q`.  
+Run this commands to create a new layout file and use it.  
+
+```bash
+# copy the default layout 
+cp ~/.config/zellij/layouts/layout_ip_address.kdl ~/.config/zellij/layouts/layout_ip_address_2.kdl
+# replace the ip address inside the file
+sed -i 's/35.199.190.85/192.30.255.112/g' ~/.config/zellij/layouts/layout_ip_address_2.kdl
+# create new zellij session with the new layout kdl
+zellij --layout ~/.config/zellij/layouts/layout_ip_address_2.kdl
+```
+
+Quit the zellij session with `Ctrl-o Ctrl-q`.  
+Now we can make a bash script `~/.config/zellij/zellij_ip_address.sh`:  
+
+```bash
+#!/bin/sh
+
+# run with argument to replace the ip address:
+# sh ~/.config/zellij/zellij_ip_address.sh 192.30.255.112
+
+# copy the default layout 
+cp ~/.config/zellij/layouts/layout_ip_address.kdl ~/.config/zellij/layouts/layout_ip_address_2.kdl
+# replace the ip address inside the file with the first argument
+sed -i "s/35.199.190.85/$1/g" ~/.config/zellij/layouts/layout_ip_address_2.kdl
+# create new zellij session with the new layout kdl
+zellij --layout ~/.config/zellij/layouts/layout_ip_address_2.kdl
+```
+
+Run with argument to replace the ip address:
+
+```bash
+sh ~/.config/zellij/zellij_ip_address.sh 192.30.255.112
+```
+
+Quit the zellij session with `Ctrl-o Ctrl-q`.  
