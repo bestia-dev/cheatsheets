@@ -1,14 +1,14 @@
 # Zellij - terminal workspaces
 
-[Zellij](https://zellij.dev/) is a terminal multiplexer and I will use it instead of "gnu screen". It can be an alternative also to tmux or terminator.  
+[Zellij](https://zellij.dev/) is a terminal multiplexer and I will use it instead of "[gnu screen](https://www.gnu.org/software/screen/)". It can be an alternative also to [tmux](https://github.com/tmux/tmux/wiki) or [terminator](https://github.com/gnome-terminator/terminator).  
 [Zellij](https://github.com/zellij-org/zellij) does not need a GUI (graphical use interface), because it works inside the text terminal. Great !  
 Most of Linux servers don't even have a GUI, but can be used only with a text terminal over SSH.  
 Zellij uses [NerdFonts](https://www.nerdfonts.com/) to make it look pretty.  
 
 ## Installation
 
-I like to put my "personal" executables in ~/bin. So I can see what specific binaries I use over time. And I can easily make a backup.  
-If ~/bin does not exist, create the folder and add it to $PATH. Add it inside ~/.bashrc to have it there after restart.  
+I like to put my "personal" executables in `~/bin``. So I can see what specific binaries I use over time. And I can easily make a backup.  
+If `~/bin` does not exist, create the folder and add it to `$PATH`. Add it inside `~/.bashrc`` to have it there after restart.  
 
 ```bash
 mkdir ~/bin
@@ -20,7 +20,7 @@ export PATH="$HOME/bin:$PATH"
 echo $PATH
 ```
 
-Append this line into ~/.bashrc, so it will be there after bash restarts:  
+Append this line into `~/.bashrc`, so it will be there after bash restarts:  
 
 ```bash
 nano ~/.bashrc
@@ -40,8 +40,8 @@ chmod +x ~/bin/zellij
 ## Nerd fonts
 
 Original text in the text terminal is boring. It should be nice to have some common icons inside the text terminal.  
-Welcome NerdFonts!  
-I use Linux inside WSL on Win10. I choose the Windows Terminal as my terminal emulator. It means I can change the font of the Terminal in Settings. It is a font from Windows, by default it is Consolas. I choose to download from <https://www.nerdfonts.com/font-downloads> the JetBrainsMono font <https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip>. Inside the zip there are a bunch of fonts with different thickness. I choose to install the `JetBrainsMonoNerdFont-Medium.ttf`. Unpack it somewhere then right click - Install font. It is now a Windows font.  
+Welcome [NerdFonts](https://www.nerdfonts.com/)!  
+I use Linux inside [WSL on Win10](https://github.com/bestia-dev/win10_wsl2_debian11). I choose the Windows Terminal as my terminal emulator. It means I can change the font of the Terminal in Settings. It is a font from Windows, by default it is Consolas. I choose to download from <https://www.nerdfonts.com/font-downloads> the [JetBrainsMono](https://www.programmingfonts.org/#jetbrainsmono) font <https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip>. Inside the zip there are a bunch of fonts with different thickness. I choose to install the `JetBrainsMonoNerdFont-Medium.ttf`. Unpack it somewhere then right click - Install font. It is now a Windows font.  
 In Windows Terminal - Settings I go to Profiles - Debian - Appearances and change the Font face to `JetBrainsMono Nerd Font` then save the changed Settings.
 
 ## Zellij nomenclature
@@ -158,7 +158,7 @@ In the node `keybinds - session` add
 bind "Ctrl q" { Quit; }
 ```
 
-Now to quit Zellij I need 2 strokes: Ctrl-o then Ctrl-q. It is not so easy to mistype this.  
+Now to quit Zellij I need 2 strokes: `Ctrl-o` then `Ctrl-q`. It is not so easy to mistype this.  
 
 ## Bash script for a specific use with replace
 
