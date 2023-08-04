@@ -49,7 +49,7 @@ In Windows Terminal - Settings I go to Profiles - Debian - Appearances and chang
 Zellij can have different "Sessions". A session can be easily attached or detached. When detached, a session still runs in the background. Great!  
 A session can have multiple "Tabs". A tab can have one or more "Panes" in different positions.  
 Zellij uses different "modes" that are activated by shortcuts like Ctrl-g (LOCK) or Ctrl-t (TAB) or Ctrl-p (PANE). The status-bar is visible by default and makes it easy to learn these shortcuts. Inside a mode there are then new shortcuts for running commands.  
-![images/zellij_status_bar.png]
+![zellij_status_bar](images/zellij_status_bar.png)
 
 
 
