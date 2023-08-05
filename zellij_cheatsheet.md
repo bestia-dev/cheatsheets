@@ -7,8 +7,8 @@ Zellij uses [NerdFonts](https://www.nerdfonts.com/) to make it look pretty.
 
 ## Installation
 
-I like to put my "personal" executables in `~/bin``. So I can see what specific binaries I use over time. And I can easily make a backup.  
-If `~/bin` does not exist, create the folder and add it to `$PATH`. Add it inside `~/.bashrc`` to have it there after restart.  
+I like to put my "personal" executables in `~/bin`. So I can see what specific binaries I use over time. And I can easily make a backup.  
+If `~/bin` does not exist, create the folder and add it to `$PATH`. Add it inside `~/.bashrc` to have it there after restart.  
 
 ```bash
 mkdir ~/bin
