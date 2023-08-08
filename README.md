@@ -1,7 +1,7 @@
 # cheatsheets
 
-![status](https://img.shields.io/badge/active_dev-green) 
-![status](https://img.shields.io/badge/in_use-green) 
+![status](https://img.shields.io/badge/maintained-green) 
+![status](https://img.shields.io/badge/tutorial-yellow) 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/dropbox_backup_to_external_disk/blob/main/LICENSE) 
 ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/000000.svg) 
 
