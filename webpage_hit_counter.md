@@ -22,8 +22,11 @@ psql -h localhost -p 5432 -U admin -W -d webpage_hit_counter
 // list the most visited webpages
 select A.webpage, B.count from webpage A join hit_counter B on B.webpage_id=A.id order by B.count desc;
 
+// to finish the scrolling of long lists press just q enter
+q
+
 // run this 2 commands together to insert a new webpage:
-insert into webpage (id, webpage) values(627386887, 'refactoring_database_web_ui_server_side_rendering');
+insert into webpage (id, webpage) values(627386887, 'page_name');
 insert into hit_counter (webpage_id,count)
 select id,2
 from webpage A
