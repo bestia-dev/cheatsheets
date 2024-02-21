@@ -5,8 +5,9 @@
 I plan to make a web interface for manipulating data in webpage_hit_counter. But this project takes a lot of time.  
 There must be a backend app and a frontend app and something sane in between. Then it must have a good authentication and authorization module.
 This takes time to develop and it is not funny and amusing.  
-In the mid-time I need to work with the database. I can do all the things in psql easy, but manually.
-Some code for psql
+In the mid-time I need to work with the database. I can do all the things in psql easy, but manually.  
+Some code for psql:
+
 ``` psql
 // enter psql
 psql -h localhost -p 5432 -U admin -W -d webpage_hit_counter
@@ -39,3 +40,4 @@ delete from webpage where id = 674042962;
 // exit psql
 \q
 ```
+
