@@ -1,5 +1,15 @@
 # webpage_hit_counter
 
+## psql over SSH
+
+From my computer I can in one single command connect to ssh and execute an SQL statement.
+
+```bash
+ssh luciano_bestia@bestia.dev " psql -h localhost -p 5432 -U admin -W -d webpage_hit_counter -c 'select A.webpage, B.count from webpage A join hit_counter B on B.webpage_id=A.id order by B.count desc;' "
+
+
+```
+
 ## psql command
 
 I plan to make a web interface for manipulating data in webpage_hit_counter. But this project takes a lot of time.  
