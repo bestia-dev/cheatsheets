@@ -17,7 +17,7 @@ ps -F -C ssh-agent
 ## Windows Powershell
 
 ```powershell
-# Get-Process ssh-agent
+Get-Process ssh-agent
 ssh-add -l
 ssh-add -t 1h $home\.ssh\rustdevuser_key
 # or make a powershell script ~\.ssh\sshadd.ps1 and alias it
@@ -32,11 +32,12 @@ ssh-add -t 1h $home\.ssh\rustdevuser_key
 ssh-add -l
 ```
 
-Recreate the alias on every startup ~\profile.ps1:
+Recreate the alias on every startup ~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1:
 
 ```ps1
-# $home\profile.ps1 should run on every startup
-echo "Use sshadd to add ssh identity to the ssh-agent."
+# $home\Documents\PowerShell\PowerShell_profile.ps1 should run on every startup
+
+echo "Use sshadd to add often used ssh identities to the ssh-agent from $home\.ssh\sshadd.ps1."
 
 New-Alias sshadd $home\.ssh\sshadd.ps1
 ```
