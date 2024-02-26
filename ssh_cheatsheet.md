@@ -7,27 +7,24 @@ Fortunately there is ssh-agent to the rescue.
 
 <https://github.com/bestia-dev/docker_rust_development/blob/main/ssh_easy.md>
 
-## ssh-add and ssh-agent
-
-In Linux bash:
+## Linux bash
 
 ```bash
 # check if it is running
 ps -F -C ssh-agent
 ```
 
-Ssh-agent even works in Windows Powershell:
+## Windows Powershell
 
 ```powershell
 # Get-Process ssh-agent
 ssh-add -l
 ssh-add -t 1h $home\.ssh\rustdevuser_key
-# or mak a powershell script ~\.ssh\sshadd.ps1
-# and alias it
+# or make a powershell script ~\.ssh\sshadd.ps1 and alias it
 New-Alias sshadd $home\.ssh\sshadd.ps1
 ```
 
- ~\.ssh\sshadd.ps1
+Create powershell script ~\.ssh\sshadd.ps1
  
 ```ps1
 echo Add ssh key identity to ssh-agent.
@@ -35,8 +32,7 @@ ssh-add -t 1h $home\.ssh\rustdevuser_key
 ssh-add -l
 ```
 
-Recreate the alias on every startup.
-Create a file profile.ps1:
+Recreate the alias on every startup ~\profile.ps1:
 
 ```ps1
 # $home\profile.ps1 should run on every startup
