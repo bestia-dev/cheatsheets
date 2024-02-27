@@ -54,3 +54,28 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 cat ~/.ssh/known_hosts
 ```
 
+## Different file formats for the same keys
+
+Key generated with ssh-keygen by default makes 2 files:  
+`~/.ssh/github_com_ssh_1` and 
+`~/.ssh/github_com_ssh_1.pub`
+
+It look that Openssl does not like these formats.  
+The same keys must be converted just into another PEM format.
+
+Convert the private key  
+Warning: It will replace the same file ! SO make the copy first.
+
+```bash
+cp ~/.ssh/github_com_ssh_1 ~/.ssh/github_com_ssh_1.priv
+ssh-keygen -p -m PEM -f ~/.ssh/github_com_ssh_1
+cp ~/.ssh/github_com_ssh_1 ~/.ssh/github_com_ssh_1.priv.pem
+cp ~/.ssh/github_com_ssh_1.priv ~/.ssh/github_com_ssh_1
+```
+
+Convert the public key
+
+```bash
+ssh-keygen -e -m PEM -f ~/.ssh/github_com_ssh_1.pub  > ~/.ssh/github_com_ssh_1.pub.pem
+bash
+
