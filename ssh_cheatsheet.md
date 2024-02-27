@@ -70,7 +70,7 @@ Warning: It will replace the same file ! SO make the copy first.
 cp ~/.ssh/github_com_ssh_1 ~/.ssh/github_com_ssh_1.priv
 ssh-keygen -p -m PEM -f ~/.ssh/github_com_ssh_1
 cp ~/.ssh/github_com_ssh_1 ~/.ssh/github_com_ssh_1.priv.pem
-cp ~/.ssh/github_com_ssh_1.priv ~/.ssh/github_com_ssh_1
+mv ~/.ssh/github_com_ssh_1.priv ~/.ssh/github_com_ssh_1
 ```
 
 Convert the public key
