@@ -11,14 +11,14 @@ So I don't have to play with VSCode UI.
 It is recommanded to set this `branch_1` as the default branch on GitHub in the Code tab.  
 So to not have problems if we modify anything in GitHub, we want it to go to this "active default" branch.  
 
-![image](https://github.com/bestia-dev/cheatsheets/assets/31509965/c6e261cf-31fd-40e3-bf7b-9886ceccb74e)
+![github_default_branch](https://raw.githubusercontent.com/bestia-dev/cheatsheets/main/images/github_default_branch.png)
 
 work locally on `branch_1`  
 add many commits and pushes on `branch_1`  
 
 When the last commit is done in Github there will be a big button to Compare and Pull Request.  
 
-![image](https://github.com/bestia-dev/cheatsheets/assets/31509965/6847999c-3c4d-43da-8b54-ecbee7b537ec)
+![github_compare_and_pull_request](https://raw.githubusercontent.com/bestia-dev/cheatsheets/main/images/github_compare_and_pull_request.png)
 
 Do the Code review and write some comments.  
 Merge Squash to main to have all the file changes in one single commit for simplicity.  
