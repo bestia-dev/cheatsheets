@@ -22,19 +22,26 @@ When the last commit is done in Github there will be a big button to Compare and
 
 Do the Code review and write some comments.  
 Merge Squash to main to have all the file changes in one single commit for simplicity.  
-In GitHub (on the remote), Delete the branch.  
 
-## How to delete the branch locally after GitHub delete branch?  
+## Before you delete the GitHub remote branch
 
-```bash
-# fetch all the changes from the remote  
-git fetch --all --prune  
+You have to pull locally what changed on the remote:
+```bash 
 # if we are not on branch_1, checkout the local branch  
 git branch checkout branch_1  
 # pull all the changes to this branch  
 git pull  
+```
+
+Now you can delete the remote branch_1 on GitHub using the big button.
+
+## After you delete the GitHub remote branch
+
+```bash
+# fetch all the changes from the remote  
+git fetch --all --prune  
 # go to the main branch
-git branch checkout main
+git checkout main
 # pull all the changes to main branch
 git pull
 # list the branches with tracking remote names
