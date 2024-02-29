@@ -1,5 +1,52 @@
 # Git cheatsheet
 
+
+## GitHub Flow for Issues, Branches and Pull Requests
+
+Create a GitHub issue  
+On the issue right bottom: Development - Create a branch. Let's say the name is `branch_1`.  
+GitHub will show the incantation to checkout locally. Great.  
+So I don't have to play with VSCode UI.  
+
+It is recommanded to set this `branch_1` as the default branch on GitHub in the Code tab.  
+So to not have problems if we modify anything in GitHub, we want it to go to this "active default" branch.  
+
+![image](https://github.com/bestia-dev/cheatsheets/assets/31509965/c6e261cf-31fd-40e3-bf7b-9886ceccb74e)
+
+work locally somothing on `branch_1`  
+add many commits and pushes on `branch_1`  
+
+When the last commit is done in Github there will be a big button to make a Pull Request.  
+Do the Code review and write some comments.  
+Merge Squash to main to have all the file changes in one single commit for simplicity.  
+In GitHub Delete the branch (on the remote).  
+
+### How to delete the branch locally after GitHub delete branch?  
+
+```bash
+# fetch all the changes from the remote  
+git fetch --all --prune  
+
+# if we are not on the branch, checkout the local branch  
+git branch checkout main  
+# pull all the changes to this branch  
+git pull  
+
+# go to the main branch
+git branch checkout main
+# pull all the changes to main branch
+git pull
+
+# list the branches with tracking remote names
+# you will see the "gone" word to signal the remote branch is deleted
+git branch -vv
+
+# Now we can finally delete the branch
+git branch --delete encrypt_decrypt
+
+# all done. Just 7 commands. Why is that not more simple?
+```
+
 ## Add a git tag to a commit with the commit's date
 
 ```bash
@@ -16,12 +63,18 @@ git checkout main
 
 ## Branch deleted on GitHub
 
-Using GitHub Pull Request, I can delete the remote branch after merging.
-But the local git knows nothing about it.
+GitHub Pull Requests are the place to Merge a branch into main.
+After Merge, I can delete the remote branch.
+But the local git knows nothing about this deletion.
 
 ```bash
+# first make main the active branch
+git checkout main
+
 # First fetch prune, so the local git knows, that a remote branch is deleted
+# and git pull to main, so the merge will be documented locally.
 git fetch --prune
+git pull
 
 # The local branch still exists, but the "tracking branch" is "gone". Mark the word "gone".
 git branch -vv
