@@ -5,7 +5,7 @@ Fortunately there is ssh-agent to the rescue.
 
 ## Read my SSH easy
 
-<https://github.com/bestia-dev/docker_rust_development/blob/main/ssh_easy.md>
+<https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/docker_rust_development/blob/main/ssh_easy.md>
 
 ## Linux bash
 
