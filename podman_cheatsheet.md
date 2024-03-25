@@ -1,7 +1,7 @@
 # Podman cheatsheet
 
-## Exec inside rust_dev_vscode_cnt as root 
+## Exec inside crustde_vscode_cnt as root 
 
 ```bash
-podman exec --user root rust_dev_vscode_cnt apt install -y tidy
+podman exec --user root crustde_vscode_cnt apt install -y tidy
 ```
