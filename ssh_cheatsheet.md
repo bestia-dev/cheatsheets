@@ -5,7 +5,7 @@ Fortunately there is ssh-agent to the rescue.
 
 ## Read my SSH easy
 
-<https://github.com/CRUSTDE-Containerized-Rust-DevEnv/crustde_cnt_img_pod/blob/main/ssh_easy.md>
+<https://github.com/CRUSTDE-ContainerizedRustDevEnv/crustde_cnt_img_pod/blob/main/ssh_easy.md>
 
 ## Linux bash
 
@@ -19,7 +19,7 @@ ps -F -C ssh-agent
 ```powershell
 Get-Process ssh-agent
 ssh-add -l
-ssh-add -t 1h $home\.ssh\localhost_2201_rustdevuser_ssh_1
+ssh-add -t 1h $home\.ssh\crustde_rustdevuser_ssh_1
 # or make a powershell script ~\.ssh\sshadd.ps1 and alias it
 New-Alias sshadd $home\.ssh\sshadd.ps1
 ```
@@ -27,8 +27,8 @@ New-Alias sshadd $home\.ssh\sshadd.ps1
 Create powershell script ~\.ssh\sshadd.ps1
  
 ```ps1
-echo Add ssh key identity to ssh-agent.
-ssh-add -t 1h $home\.ssh\localhost_2201_rustdevuser_ssh_1
+printf "Add ssh key identity to ssh-agent.\n"
+ssh-add -t 1h $home\.ssh\crustde_rustdevuser_ssh_1
 ssh-add -l
 ```
 
@@ -37,7 +37,7 @@ Recreate the alias on every startup ~\Documents\PowerShell\Microsoft.PowerShell_
 ```ps1
 # $home\Documents\PowerShell\PowerShell_profile.ps1 should run on every startup
 
-echo "Use sshadd to add often used ssh identities to the ssh-agent from $home\.ssh\sshadd.ps1."
+printf "Use sshadd to add often used ssh identities to the ssh-agent from $home\.ssh\sshadd.ps1.\n"
 
 New-Alias sshadd $home\.ssh\sshadd.ps1
 ```
