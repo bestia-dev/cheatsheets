@@ -1,6 +1,6 @@
 # ssh cheatsheet
 
-It is annoying to type the passcode eveytime we use ssh.  
+It is annoying to type the passphrase eveytime we use ssh.  
 Fortunately there is ssh-agent to the rescue. 
 
 ## Read my SSH easy
